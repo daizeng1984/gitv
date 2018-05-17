@@ -1484,9 +1484,9 @@ fu! s:OpenWorkingDiff(geditForm, staged)
         let suffix = ''
     endif
     if a:staged
-        let cmd = 'call Gitv_OpenGitCommand(\"diff --no-color --cached'.suffix.'\", \"'.winCmd.'\")'
+        let cmd = 'call Gitv_OpenGitCommand(\"-c core.autocrlf=false diff --no-color --cached'.suffix.'\", \"'.winCmd.'\")'
     else
-        let cmd = 'call Gitv_OpenGitCommand(\"diff --no-color'.suffix.'\", \"'.winCmd.'\")'
+        let cmd = 'call Gitv_OpenGitCommand(\"-c core.autocrlf=false diff --no-color'.suffix.'\", \"'.winCmd.'\")'
     endif
     let cmd = 'call s:RecordBufferExecAndWipe("'.cmd.'", '.(winCmd=='').')'
     call s:MoveIntoPreviewAndExecute(cmd, 1)
